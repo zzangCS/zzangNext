@@ -6,7 +6,7 @@ import classes from "./button.module.css";
 const Button = (props) => {
   const { link } = props;
 
-  if (props.Link) {
+  if (link) {
     return (
       <Link href={link} className={classes.btn}>
         {props.children}
