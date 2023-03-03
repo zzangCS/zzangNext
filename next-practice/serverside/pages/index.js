@@ -1,12 +1,15 @@
 import fs from "fs/promises";
 import path from "path";
+import Link from "next/link";
 
 function HomePage(props) {
   const { products } = props; //props객체의 products 키를 가져올 수 있음
   return (
     <ul>
       {products.map((product) => (
-        <li key={product.id}>{product.title}</li>
+        <li key={product.id}>
+          <Link href={`/${product.id}`}>{product.title}</Link>
+        </li>
       ))}
     </ul>
   );
@@ -23,6 +26,8 @@ export async function getStaticProps(context) {
       products: data.products,
     },
     revalidate: 10, //초 단위: 재생성될 시간
+    // notFound:true, 404페이지 반환-데이터패칭 실패시
+    // redirect:{destination:'/no-data'} 리다이렉트-데이터패칭 실패시
   };
 }
 
