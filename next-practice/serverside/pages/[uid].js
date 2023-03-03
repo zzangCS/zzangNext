@@ -1,5 +1,5 @@
-const UserID = () => {
-  return <div>UserID</div>;
+const UserID = (props) => {
+  return <div>{props.id}</div>;
 };
 
 export default UserID;
@@ -8,9 +8,11 @@ export async function getServerSideProps(context) {
   const { params } = context;
 
   const userId = params.uid;
+
+  console.log(userId);
   return {
     props: {
-      id: "userid-" + userId,
+      id: `user id ${userId}`
     },
   };
 }
