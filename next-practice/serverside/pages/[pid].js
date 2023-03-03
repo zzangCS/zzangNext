@@ -31,6 +31,11 @@ export async function getStaticProps(context) {
   //필터링
   const product = data.products.find((product) => product.id === productId);
 
+  //product가 없으면 404페이지 띄우기
+  if (!product) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       loadedProduct: product,
