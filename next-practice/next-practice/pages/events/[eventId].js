@@ -7,10 +7,17 @@ import ErrorAlert from "@/components/ui/error-alert";
 
 const EventDetailPage = (props) => {
   const event = props.selectedEvent;
+  const pageHeadData = (
+    <Head>
+      <title>히히</title>
+      <meta name="description" content="ALl Events" />
+    </Head>
+  );
 
   if (!event) {
     return (
       <div className="centers">
+        {pageHeadData}
         <p>Loading...</p>
       </div>
     );
